@@ -1,6 +1,7 @@
 ﻿using Patterns2.Composite;
 using Patterns2.Flyweighht;
 using Patterns2.Iterator;
+using Patterns2.State;
 using Patterns2.Template_Method;
 using System;
 
@@ -14,7 +15,8 @@ namespace Patterns2
             //TestTemplateMethod();
             //TestComposite();
             //TestIterator();
-            TestFlyweight();
+            //TestFlyweight();
+            TestState();
         }
 
         public static void TestTemplateMethod()
@@ -135,6 +137,21 @@ namespace Patterns2
             redRoundBox.Display("Red");
             unsharedBox.Display("Green");
 
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+
+        public static void TestState()
+        {
+            Console.WriteLine("----------------------State----------------------");
+            Client client = new Client("Jonas Jonaitis", 200);
+            client.Purchase(5);
+            client.Purchase(5);
+            client.Purchase(10);
+            client.Purchase(20);
+            client.Purchase(40);
+            client.Purchase(5);
+            client.Purchase(5);
+            client.Purchase(20);
             Console.WriteLine("---------------------------------------------------\n");
         }
     }
