@@ -197,6 +197,11 @@ namespace Patterns2
             Console.WriteLine("\nAdvertisement email:");
             spamHandler.HandleEmail("Advertisement");
 
+
+            complaintHandler.Handler = null;
+            Console.WriteLine("\n(Broken chain)New Location email:");
+            spamHandler.HandleEmail("Location");
+
             Console.WriteLine("---------------------------------------------------\n");
         }
     }

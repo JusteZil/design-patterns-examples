@@ -13,7 +13,10 @@ namespace Patterns2.Chain_of_responsibility
             else
             {
                 Console.WriteLine("Complaint handler cannot handle this email");
-                Handler.HandleEmail(email);
+                if(Handler != null)
+                    Handler.HandleEmail(email);
+                else
+                Console.WriteLine("Complaint handler has no successor. Email unhandled");
             }
         }
     }

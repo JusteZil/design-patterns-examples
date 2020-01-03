@@ -13,7 +13,10 @@ namespace Patterns2.Chain_of_responsibility
             else
             {
                 Console.WriteLine("Spam handler cannot handle this email");
-                Handler.HandleEmail(email);
+                if (Handler != null)
+                    Handler.HandleEmail(email);
+                else
+                    Console.WriteLine("Spam handler has no successor. Email unhandled");
             }
         }
     }

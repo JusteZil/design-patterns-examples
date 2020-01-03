@@ -8,7 +8,7 @@ namespace Patterns2.Chain_of_responsibility
     {
         public override void HandleEmail(string email)
         {
-            Console.WriteLine("Email has not been handled");
+            Console.WriteLine("Email got to UnknownEmailHandler. Email unhandled");
         }
     }
 }
