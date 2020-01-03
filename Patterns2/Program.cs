@@ -1,4 +1,5 @@
-﻿using Patterns2.Composite;
+﻿using Patterns2.Chain_of_responsibility;
+using Patterns2.Composite;
 using Patterns2.Flyweighht;
 using Patterns2.Iterator;
 using Patterns2.Proxy;
@@ -18,7 +19,8 @@ namespace Patterns2
             //TestIterator();
             //TestFlyweight();
             //TestState();
-            TestVirtualProxy();
+            //TestVirtualProxy();
+            TestChainOfResponsibility();
         }
 
         public static void TestTemplateMethod()
@@ -163,6 +165,38 @@ namespace Patterns2
             ISubject image = new ImageProxy();
             image.DisplayImage();
             image.DisplayImage();
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+
+        public static void TestChainOfResponsibility()
+        {
+            Console.WriteLine("----------------------Chain of Responsibility----------------------");
+            EmailHandler spamHandler= new SpamHandler();
+            EmailHandler fanHandler = new FanHandler();
+            EmailHandler complaintHandler = new ComplaintHandler();
+            EmailHandler newLocationHandler = new NewLocationHandler();
+            EmailHandler unknownEmailHandler = new UnknownEmailHandler();
+
+            spamHandler.Handler = fanHandler;
+            fanHandler.Handler = complaintHandler;
+            complaintHandler.Handler = newLocationHandler;
+            newLocationHandler.Handler = unknownEmailHandler;
+
+            Console.WriteLine("Spam email:");
+            spamHandler.HandleEmail("Spam");
+
+            Console.WriteLine("\nFan email");
+            spamHandler.HandleEmail("Fan");
+
+            Console.WriteLine("\nComplaint email:");
+            spamHandler.HandleEmail("Complaint");
+
+            Console.WriteLine("\nNew location email:");
+            spamHandler.HandleEmail("Location");
+
+            Console.WriteLine("\nAdvertisement email:");
+            spamHandler.HandleEmail("Advertisement");
+
             Console.WriteLine("---------------------------------------------------\n");
         }
     }
