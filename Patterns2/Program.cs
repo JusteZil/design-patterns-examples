@@ -1,6 +1,7 @@
 ﻿using Patterns2.Composite;
 using Patterns2.Flyweighht;
 using Patterns2.Iterator;
+using Patterns2.Proxy;
 using Patterns2.State;
 using Patterns2.Template_Method;
 using System;
@@ -16,7 +17,8 @@ namespace Patterns2
             //TestComposite();
             //TestIterator();
             //TestFlyweight();
-            TestState();
+            //TestState();
+            TestVirtualProxy();
         }
 
         public static void TestTemplateMethod()
@@ -152,6 +154,15 @@ namespace Patterns2
             client.Purchase(5);
             client.Purchase(5);
             client.Purchase(20);
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+
+        public static void TestVirtualProxy()
+        {
+            Console.WriteLine("----------------------Virtual Proxy----------------------");
+            ISubject image = new ImageProxy();
+            image.DisplayImage();
+            image.DisplayImage();
             Console.WriteLine("---------------------------------------------------\n");
         }
     }
