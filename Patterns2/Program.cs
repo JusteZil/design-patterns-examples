@@ -6,6 +6,8 @@ using Patterns2.Interpreter.Calculator;
 using Patterns2.Interpreter.Relationship;
 using Patterns2.Interpreter.Roman;
 using Patterns2.Iterator;
+using Patterns2.Mediator.ChatRoom;
+using Patterns2.Mediator.AlarmSystem;
 using Patterns2.Proxy;
 using Patterns2.State;
 using Patterns2.Template_Method;
@@ -26,9 +28,11 @@ namespace Patterns2
             //TestState();
             //TestVirtualProxy();
             //TestChainOfResponsibility();
-            TestInterpreterRoman();
-            TestInterpreterCalculator();
-            TestInterpreterRelationships();
+            //TestInterpreterRoman();
+            //TestInterpreterCalculator();
+            //TestInterpreterRelationships();
+            //TestMediatorAsObserver();
+            TestMediator();
         }
 
         public static void TestTemplateMethod()
@@ -264,6 +268,48 @@ namespace Patterns2
             context.SetInput("Single, Alice");
             Console.WriteLine(isCommitted.Interpret(context));
 
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+        public static void TestMediatorAsObserver()
+        {
+            Console.WriteLine("----------------------Mediator as Observer----------------------");
+            PublicChatRoom publicChatRoon = new PublicChatRoom();
+            VipColleague vip1 = new VipColleague(publicChatRoon, "Alice");
+            VipColleague vip2 = new VipColleague(publicChatRoon, "Bob");
+
+            RegularColleague reg1 = new RegularColleague(publicChatRoon, "Robert");
+            RegularColleague reg2 = new RegularColleague(publicChatRoon, "Marry");
+            RegularColleague reg3 = new RegularColleague(publicChatRoon, "Anasthasia");
+
+            publicChatRoon.Register(vip1);
+            publicChatRoon.Register(vip2);
+            publicChatRoon.Register(reg1);
+            publicChatRoon.Register(reg2);
+            publicChatRoon.Register(reg3);
+
+            vip1.Send("Bob", "Hey, how are you?");
+            vip2.Send("Alice", "I am on a vacation now");
+            reg3.Send("All", "How is everyone?");
+
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+
+        public static void TestMediator()
+        {
+            Console.WriteLine("----------------------Mediator----------------------");
+            AlarmSystem system = new AlarmSystem();
+            
+            AlarmClock clock = new AlarmClock(system);
+            CoffeeMachine coffeeMachine = new CoffeeMachine(system);
+            Heater heater = new Heater(system);
+            Stereo stereo = new Stereo(system);
+
+            system.SetAlarmClock(clock);
+            system.SetCoffeeMachine(coffeeMachine);
+            system.SetHeater(heater);
+            system.SetStereo(stereo);
+
+            clock.AlarmOn();           
             Console.WriteLine("---------------------------------------------------\n");
         }
     }
