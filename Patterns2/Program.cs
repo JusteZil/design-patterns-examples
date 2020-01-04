@@ -3,6 +3,7 @@ using Patterns2.Composite;
 using Patterns2.Flyweighht;
 using Patterns2.Interpreter;
 using Patterns2.Interpreter.Calculator;
+using Patterns2.Interpreter.Relationship;
 using Patterns2.Interpreter.Roman;
 using Patterns2.Iterator;
 using Patterns2.Proxy;
@@ -27,6 +28,7 @@ namespace Patterns2
             //TestChainOfResponsibility();
             TestInterpreterRoman();
             TestInterpreterCalculator();
+            TestInterpreterRelationships();
         }
 
         public static void TestTemplateMethod()
@@ -215,7 +217,7 @@ namespace Patterns2
             Console.WriteLine("----------------------Interpreter Roman----------------------");
 
             string roman = "MCMXXVIII";
-            Context context = new Context(roman);
+            Interpreter.Roman.Context context = new Interpreter.Roman.Context(roman);
 
             // Build the 'parse tree'
             List<Expression> tree = new List<Expression>();
@@ -238,6 +240,29 @@ namespace Patterns2
             Console.WriteLine("----------------------Interpreter Calculator----------------------");
             ExpressionParser expParser = new ExpressionParser();
             expParser.Parse("2 5 +");
+
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+        public static void TestInterpreterRelationships()
+        {
+            Console.WriteLine("----------------------Interpreter Relationships----------------------");
+            Expr person1 = new Terminal("Tom");
+            Expr person2 = new Terminal("Luke");
+            Expr isSingle = new OrExpression(person1, person2);
+
+            Expr alice = new Terminal("Alice");
+            Expr committed = new Terminal("Committed");
+            Expr isCommitted = new AndExpression(alice, committed);
+
+            Interpreter.Relationship.Context context = new Interpreter.Relationship.Context("Tom");
+            Console.WriteLine(isSingle.Interpret(context));
+            context.SetInput("Andrew");
+            Console.WriteLine(isSingle.Interpret(context));
+
+            context.SetInput("Committed, Alice");
+            Console.WriteLine(isCommitted.Interpret(context));
+            context.SetInput("Single, Alice");
+            Console.WriteLine(isCommitted.Interpret(context));
 
             Console.WriteLine("---------------------------------------------------\n");
         }
