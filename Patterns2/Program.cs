@@ -14,6 +14,7 @@ using Patterns2.Template_Method;
 using System;
 using System.Collections.Generic;
 using Patterns2.Memento;
+using Patterns2.Visitor;
 
 namespace Patterns2
 {
@@ -34,7 +35,8 @@ namespace Patterns2
             //TestInterpreterRelationships();
             //TestMediatorAsObserver();
             //TestMediator();
-            TestMemento();
+            //TestMemento();
+            TestVisitor();
         }
 
         public static void TestTemplateMethod()
@@ -161,7 +163,7 @@ namespace Patterns2
         public static void TestState()
         {
             Console.WriteLine("----------------------State----------------------");
-            Client client = new Client("Jonas Jonaitis", 200);
+            State.Client client = new State.Client("Jonas Jonaitis", 200);
             client.Purchase(5);
             client.Purchase(5);
             client.Purchase(10);
@@ -328,6 +330,26 @@ namespace Patterns2
             UserMemento memento = careTaker.GetMemento();
             user1.GetMemento(memento);
             user2.GetMemento(memento);
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+
+        public static void TestVisitor()
+        {
+            Console.WriteLine("----------------------Visitor----------------------");
+            Visitor.Client child = new Child("John");
+            Visitor.Client adult = new Adult("Marry");
+            Visitor.Client pensioner = new Pensioner("Richard");
+
+            IInsurer ergo = new ErgoInsurance();
+            IInsurer lietuvosDraudimas = new LietuvosInsurance();
+
+            child.GetInsuranceCost(ergo);
+            child.GetInsuranceCost(lietuvosDraudimas);
+            adult.GetInsuranceCost(ergo);
+            adult.GetInsuranceCost(lietuvosDraudimas);
+            pensioner.GetInsuranceCost(ergo);
+            pensioner.GetInsuranceCost(lietuvosDraudimas);
+
             Console.WriteLine("---------------------------------------------------\n");
         }
     }
