@@ -13,6 +13,7 @@ using Patterns2.State;
 using Patterns2.Template_Method;
 using System;
 using System.Collections.Generic;
+using Patterns2.Memento;
 
 namespace Patterns2
 {
@@ -32,7 +33,8 @@ namespace Patterns2
             //TestInterpreterCalculator();
             //TestInterpreterRelationships();
             //TestMediatorAsObserver();
-            TestMediator();
+            //TestMediator();
+            TestMemento();
         }
 
         public static void TestTemplateMethod()
@@ -310,6 +312,22 @@ namespace Patterns2
             system.SetStereo(stereo);
 
             clock.AlarmOn();           
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+
+        public static void TestMemento()
+        {
+            Console.WriteLine("----------------------Memento----------------------");
+            CareTaker careTaker = new CareTaker();
+            User user1 = new User("Alice", "+37064586339", new List<string> { "Dancing", "Swimming" });
+            User user2 = new User("Bob", "+37074185239", new List<string> { "Boxing" });
+
+            careTaker.Add(user1.CreateMemento());
+
+            user1.UpdateState(user1.PhoneNo, new List<string> { "Sports", "Fishing" });
+            UserMemento memento = careTaker.GetMemento();
+            user1.GetMemento(memento);
+            user2.GetMemento(memento);
             Console.WriteLine("---------------------------------------------------\n");
         }
     }
