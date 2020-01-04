@@ -6,28 +6,27 @@ namespace Patterns2.Memento
 {
     public class User
     {
-        public string Name;
-        public string PhoneNo;
-        public List<string> Hobbies;
+        public string Name { get; }
+        private string _phoneNo;
+        private List<string> _hobbies;
         public User(string name, string phoneNo, List<string> hobbies)
         {
             Name = name;
-            PhoneNo = phoneNo;
-            Hobbies = hobbies;
+            _phoneNo = phoneNo;
+            _hobbies = hobbies;
             Console.WriteLine("User: {0}", this);
         }
 
-        public void UpdateState(string phoneNo, List<string> hobbies)
+        public void UpdateState(List<string> hobbies)
         {
-            PhoneNo = phoneNo;
-            Hobbies = hobbies;
+            _hobbies = hobbies;
             Console.WriteLine("User updated: {0}", this);
         }
 
         public UserMemento CreateMemento()
         {
             Console.Write("Creating memento: ");
-            return new UserMemento(this);
+            return new UserMemento(Name, _hobbies);
         }
 
         public void GetMemento(UserMemento memento)
@@ -38,7 +37,7 @@ namespace Patterns2.Memento
 
         public override string ToString()
         {
-            return Name + "(" + PhoneNo + "). Hobbies: " + String.Join(", ", Hobbies);
+            return Name + "(" + _phoneNo + "). Hobbies: " + String.Join(", ", _hobbies);
         }
     }
 }

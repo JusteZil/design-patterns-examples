@@ -6,23 +6,23 @@ namespace Patterns2.Memento
 {
     public class UserMemento
     {
-        private User _user;
-        public UserMemento(User user)
+        private string _name;
+        private List<string> _hobbies;
+        public UserMemento(string name, List<string> hobbies)
         {
-            _user = new User(user.Name, user.PhoneNo, user.Hobbies);
+            _name = name;
+            _hobbies = hobbies;
         }
 
         public void GetState(User user)
         {
-            if (user.Name != _user.Name)
+            if (_name != user.Name)
             {
                 Console.WriteLine("Access denied");
             }
             else
             {
-                user.Hobbies = _user.Hobbies;
-                user.PhoneNo = _user.PhoneNo;
-                Console.WriteLine("User updated: {0}", _user);
+                user.UpdateState(_hobbies);
             }
         }
     }

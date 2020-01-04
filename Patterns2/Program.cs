@@ -324,7 +324,7 @@ namespace Patterns2
 
             careTaker.Add(user1.CreateMemento());
 
-            user1.UpdateState(user1.PhoneNo, new List<string> { "Sports", "Fishing" });
+            user1.UpdateState(new List<string> { "Sports", "Fishing" });
             UserMemento memento = careTaker.GetMemento();
             user1.GetMemento(memento);
             user2.GetMemento(memento);
