@@ -1,11 +1,15 @@
 ﻿using Patterns2.Chain_of_responsibility;
 using Patterns2.Composite;
 using Patterns2.Flyweighht;
+using Patterns2.Interpreter;
+using Patterns2.Interpreter.Calculator;
+using Patterns2.Interpreter.Roman;
 using Patterns2.Iterator;
 using Patterns2.Proxy;
 using Patterns2.State;
 using Patterns2.Template_Method;
 using System;
+using System.Collections.Generic;
 
 namespace Patterns2
 {
@@ -20,7 +24,9 @@ namespace Patterns2
             //TestFlyweight();
             //TestState();
             //TestVirtualProxy();
-            TestChainOfResponsibility();
+            //TestChainOfResponsibility();
+            TestInterpreterRoman();
+            TestInterpreterCalculator();
         }
 
         public static void TestTemplateMethod()
@@ -201,6 +207,37 @@ namespace Patterns2
             complaintHandler.Handler = null;
             Console.WriteLine("\n(Broken chain)New Location email:");
             spamHandler.HandleEmail("Location");
+
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+        public static void TestInterpreterRoman()
+        {
+            Console.WriteLine("----------------------Interpreter Roman----------------------");
+
+            string roman = "MCMXXVIII";
+            Context context = new Context(roman);
+
+            // Build the 'parse tree'
+            List<Expression> tree = new List<Expression>();
+            tree.Add(new ThousandExpression());
+            tree.Add(new HundredExpression());
+            tree.Add(new TenExpression());
+            tree.Add(new OneExpression());
+
+            // Interpret
+            foreach (Expression exp in tree)
+            {
+                exp.Interpret(context);
+            }
+
+            Console.WriteLine("{0} = {1}", roman, context.Output);
+            Console.WriteLine("---------------------------------------------------\n");
+        }
+        public static void TestInterpreterCalculator()
+        {
+            Console.WriteLine("----------------------Interpreter Calculator----------------------");
+            ExpressionParser expParser = new ExpressionParser();
+            expParser.Parse("2 5 +");
 
             Console.WriteLine("---------------------------------------------------\n");
         }
