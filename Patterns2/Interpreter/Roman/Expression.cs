@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Interpreter.Roman
+﻿namespace Patterns2.Interpreter.Roman
 {
     public abstract class Expression
     {
         public void Interpret(Context context)
         {
             if (context.Input.Length == 0)
+            {
                 return;
+            }
 
             if (context.Input.StartsWith(Nine()))
             {

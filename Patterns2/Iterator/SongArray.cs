@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Iterator
+﻿namespace Patterns2.Iterator
 {
     public class SongArray : Aggregate
     {
         private Song[] _songs;
-        int _index = 0;
+        private int _index = 0;
 
         public SongArray()
         {

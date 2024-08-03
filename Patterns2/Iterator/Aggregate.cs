@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Iterator
+﻿namespace Patterns2.Iterator
 {
     public interface Aggregate
     {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Proxy
 {
@@ -8,13 +6,9 @@ namespace Patterns2.Proxy
     {
         private ISubject image;
 
-        public ImageProxy()
-        {
-        }
-
         public void DisplayImage()
         {
-            if(image == null)
+            if (image == null)
             {
                 Console.WriteLine("Loading image");
                 image = new Image();

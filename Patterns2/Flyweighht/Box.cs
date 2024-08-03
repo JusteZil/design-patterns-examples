@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Flyweighht
+﻿namespace Patterns2.Flyweighht
 {
     public abstract class Box
     {
-        public int Height;
-        public int Width;
-        public int Length;
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public int Length { get; set; }
 
         public Box(int height, int width, int length)
         {

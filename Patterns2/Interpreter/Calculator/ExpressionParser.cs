@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Patterns2.Interpreter.Calculator
 {
-    class ExpressionParser
+    public class ExpressionParser
     {
-        Stack<IExpression> stack = new Stack<IExpression>();
+        private readonly Stack<IExpression> _stack = new Stack<IExpression>();
         public int Parse(string str)
         {
             string[] tokenList = str.Split(" ");
@@ -20,7 +17,7 @@ namespace Patterns2.Interpreter.Calculator
                     try
                     {
                         IExpression numberExpression = new NumberExpression(int.Parse(symbol));
-                        stack.Push(numberExpression);
+                        _stack.Push(numberExpression);
                         Console.WriteLine("Pushed to stack: {0}", numberExpression.Evaluate());
                     }
                     catch (Exception e)
@@ -33,8 +30,8 @@ namespace Patterns2.Interpreter.Calculator
                 {
                     try
                     {
-                        IExpression firstExpression = stack.Pop();
-                        IExpression secondExpression = stack.Pop();
+                        IExpression firstExpression = _stack.Pop();
+                        IExpression secondExpression = _stack.Pop();
 
                         Console.WriteLine("Popped operands {0} and {1}", firstExpression.Evaluate(),
                             secondExpression.Evaluate());
@@ -44,7 +41,7 @@ namespace Patterns2.Interpreter.Calculator
 
                         var res = op.Evaluate();
                         NumberExpression resultExpression = new NumberExpression(res);
-                        stack.Push(resultExpression);
+                        _stack.Push(resultExpression);
                         Console.WriteLine("Pushed result to stack: {0}", resultExpression.Evaluate());
                     }
                     catch (Exception e)
@@ -54,7 +51,7 @@ namespace Patterns2.Interpreter.Calculator
                     }
                 }
             }
-            int result = stack.Pop().Evaluate();
+            int result = _stack.Pop().Evaluate();
             return result;
         }
     }

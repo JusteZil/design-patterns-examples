@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Patterns2.Iterator
 {
     public class ListIterator : IIterator
     {
-        List<Song> _songs;
-        int _index;
+        private List<Song> _songs;
+        private int _index;
+
         public ListIterator(List<Song> songs)
         {
             _songs = songs;
             _index = 0;
         }
 
-        public Song CurrentElement()
+        public Song Current()
         {
             if (!HasNext())
+            {
                 return null;
+            }
+
             return _songs[_index];
         }
 
@@ -35,7 +37,9 @@ namespace Patterns2.Iterator
         public void Next()
         {
             if (HasNext())
+            {
                 _index++;
+            }
         }
     }
 }

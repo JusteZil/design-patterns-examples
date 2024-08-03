@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Iterator
+﻿namespace Patterns2.Iterator
 {
     public class Song
     {
-        private string _artist;
-        private string _songName;
+        public string Artist { get; set; }
+        public string SongName { get; set; }
 
         public Song(string artist, string songName)
         {
-            _artist = artist;
-            _songName = songName;
+            Artist = artist;
+            SongName = songName;
         }
 
         public override string ToString()
         {
-            return _artist + "-" + _songName;
+            return $"{Artist}: {SongName}";
         }
     }
 }

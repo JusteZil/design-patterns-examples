@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Interpreter.Roman
+﻿namespace Patterns2.Interpreter.Roman
 {
     class HundredExpression : Expression
     {

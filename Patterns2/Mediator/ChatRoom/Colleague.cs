@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Mediator.ChatRoom
+﻿namespace Patterns2.Mediator.ChatRoom
 {
     public abstract class Colleague
     {
-        public IChatRoom ChatRoom;
-        public string Name;
+        public IChatRoom ChatRoom { get; set; }
+        public string Name { get; set; }
         public Colleague(IChatRoom chatRoom, string name)
         {
             ChatRoom = chatRoom;

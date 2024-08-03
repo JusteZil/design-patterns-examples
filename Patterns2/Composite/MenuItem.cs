@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Composite
 {
@@ -17,7 +15,7 @@ namespace Patterns2.Composite
 
         public override void Display(int depth)
         {
-            Console.WriteLine(new String('-', depth) + Name + ", " + Price);
+            Console.WriteLine(new string('-', depth) + Name + ", " + Price);
         }
     }
 }

@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Interpreter.Relationship
+﻿namespace Patterns2.Interpreter.Relationship
 {
-    public abstract class NonTerminal : Expr
+    public abstract class NonTerminal : Expression
     {
-        public Expr Left;
-        public Expr Right;
+        public Expression Left;
+        public Expression Right;
 
-        public NonTerminal(Expr left, Expr right)
+        public NonTerminal(Expression left, Expression right)
         {
             Left = left;
             Right = right;
         }
-
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Interpreter.Calculator
 {
@@ -13,7 +11,10 @@ namespace Patterns2.Interpreter.Calculator
         public override int Evaluate()
         {
             if (Right.Evaluate() == 0)
+            {
                 throw new DivideByZeroException();
+            }
+
             return Left.Evaluate() / Right.Evaluate();
         }
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Composite
+﻿namespace Patterns2.Composite
 {
     public abstract class MenuComponent
     {

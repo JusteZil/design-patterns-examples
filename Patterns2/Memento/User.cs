@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Memento
 {
     public class User
     {
-        public string Name { get; }
+        public string Name { get; set; }
         private string _phoneNo;
         private List<string> _hobbies;
+
         public User(string name, string phoneNo, List<string> hobbies)
         {
             Name = name;
@@ -37,7 +37,7 @@ namespace Patterns2.Memento
 
         public override string ToString()
         {
-            return Name + "(" + _phoneNo + "). Hobbies: " + String.Join(", ", _hobbies);
+            return Name + "(" + _phoneNo + "). Hobbies: " + string.Join(", ", _hobbies);
         }
     }
 }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Interpreter.Relationship
+﻿namespace Patterns2.Interpreter.Relationship
 {
-    public class Terminal : Expr
+    public class Terminal : Expression
     {
         public string Name;
 

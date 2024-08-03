@@ -1,26 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Patterns2.Template_Method
+namespace Patterns2.TemplateMethod
 {
-    public class Coffee : Beverage
+    public class Tea : Beverage
     {
         private bool _withCondiments = false;
-        public Coffee(bool withCondiments)
+        public Tea(bool withCondiments)
         {
             _withCondiments = withCondiments;
         }
 
         public override void AddBeverage()
         {
-            Console.WriteLine("Adding coffee grains");
+            Console.WriteLine("Adding teabag");
         }
 
         public override void AddCondiments()
         {
-            Console.WriteLine("Adding sugar and milk");
+            Console.WriteLine("Adding sugar and lemon");
         }
+
         public override bool CondimentsNeeded()
         {
             return _withCondiments;

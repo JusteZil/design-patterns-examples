@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Composite
 {
@@ -26,7 +25,7 @@ namespace Patterns2.Composite
 
         public override void Display(int depth)
         {
-            Console.WriteLine(new String('-', depth) + Name);
+            Console.WriteLine(new string('-', depth) + Name);
             // Recursively display child nodes
             foreach (MenuComponent component in MenuComponents)
             {

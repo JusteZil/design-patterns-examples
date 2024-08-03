@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Interpreter.Relationship
+﻿namespace Patterns2.Interpreter.Relationship
 {
     public class Context
     {

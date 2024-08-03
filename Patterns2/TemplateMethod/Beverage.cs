@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Patterns2.Template_Method
+namespace Patterns2.TemplateMethod
 {
     public abstract class Beverage
     {

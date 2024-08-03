@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Patterns2.Mediator.ChatRoom
 {
     public class PublicChatRoom : IChatRoom
     {
-        private Dictionary<string, Colleague> _colleagues;
+        private readonly Dictionary<string, Colleague> _colleagues = new Dictionary<string, Colleague>();
 
-        public PublicChatRoom()
-        {
-            _colleagues = new Dictionary<string, Colleague>();
-        }
         public void Broadcast(string to, Colleague fromColleague, string message)
         {
             Colleague colleague;
-            if(to == "All")
+            if (to == "All")
             {
                 foreach (Colleague c in _colleagues.Values)
+                {
                     c.Receive(fromColleague.Name, message);
+                }
             }
             else if (_colleagues.ContainsKey(to))
             {

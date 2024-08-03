@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Mediator.AlarmSystem
 {
     public class AlarmSystem
     {
+        private AlarmClock _clock;
+        private Stereo _stereo;
+        private Heater _heater;
+        private CoffeeMachine _coffeeMachine;
 
-        AlarmClock _clock;
-        Stereo _stereo;
-        Heater _heater;
-        CoffeeMachine _coffeeMachine;
-
-        public AlarmSystem()
-        {
-        }
         public void SetAlarmClock(AlarmClock clock)
         {
             _clock = clock;

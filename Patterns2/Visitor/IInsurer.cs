@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Patterns2.Visitor
+﻿namespace Patterns2.Visitor
 {
     public interface IInsurer
     {

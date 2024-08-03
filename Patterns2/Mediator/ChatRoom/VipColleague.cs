@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Mediator.ChatRoom
 {
@@ -8,7 +6,6 @@ namespace Patterns2.Mediator.ChatRoom
     {
         public VipColleague(IChatRoom chatRoom, string name) : base(chatRoom, name)
         {
-
         }
 
         public override void Receive(string from, string message)

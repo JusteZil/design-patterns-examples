@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Patterns2.Mediator.AlarmSystem
 {
@@ -8,7 +6,6 @@ namespace Patterns2.Mediator.AlarmSystem
     {
         public Stereo(AlarmSystem alarmSystem) : base(alarmSystem)
         {
-
         }
 
         public void PlayMusic()
