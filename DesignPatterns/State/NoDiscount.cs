@@ -1,0 +1,21 @@
+﻿using System;
+
+namespace DesignPatterns.State
+{
+    public class NoDiscount : IDiscount
+    {
+        public double HandlePurchaseDiscount(double price, Client client)
+        {
+            client.BonusPoints++;
+            Console.WriteLine("Purchasing for {0} with no discount", price);
+            Console.WriteLine("Total bonus points: {0}", client.BonusPoints);
+
+            if (client.BonusPoints > 2)
+            {
+                client.SetDiscount(new SmallDiscount());
+            }
+
+            return price;
+        }
+    }
+}
